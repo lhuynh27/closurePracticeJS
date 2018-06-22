@@ -35,10 +35,7 @@ var greetingFactory = function(greeting) {
 // calculatorTwo() // 10
 
 var sumCalculator = function(initialValue) {
-	var total = initialValue;
-	if(initialValue === undefined){
-		return 0;
-	}
+	var total = initialValue || 0;
 	return function(){
 		var arg = Array.from(arguments);
 		total = arg.reduce(function(accumulator, valuePassedIn){
@@ -81,8 +78,32 @@ var sumCalculator = function(initialValue) {
 // gameTally.checkTally(); // should have updated count with heads added or tails added
 
 var coinFlipTally = function() {
-  var storage = {};
+  var storage = {
+  	head: 0,
+  	tail: 0
+  };
+
+  var methods = {
+  	makeCoinFlip: function(){
+  		if(Math.random() < 0.5){
+  			storage.head++;
+  			return 'heads';
+  		}
+  		storage.tail++;
+  		return 'tails';
+  	}
+  	checkTally: function(){
+  		return storage;
+  	}
+  };
+  return methods;
 }
+
+//----PASSED ALL TEST----//
+
+
+
+
 
 module.exports = {
   greetingFactory: greetingFactory,
