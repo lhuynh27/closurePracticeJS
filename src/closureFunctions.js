@@ -9,7 +9,10 @@
 // holaGreeting('Shi-Hao'); // 'Hola, Shi-Hao'
 
 var greetingFactory = function(greeting) {
-  // INSERT CODE HERE
+	var greet = greeting;
+	return function(string){
+		return greet + ', ' + string;
+	}
 }
 
 // sumCalculator takes in an initial number that is stored and returns a function
