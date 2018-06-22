@@ -35,10 +35,7 @@ var greetingFactory = function(greeting) {
 // calculatorTwo() // 10
 
 var sumCalculator = function(initialValue) {
-	var total = initialValue;
-	if(initialValue === undefined){
-		return 0;
-	}
+	var total = initialValue || 0;
 	return function(){
 		var arg = Array.from(arguments);
 		total = arg.reduce(function(accumulator, valuePassedIn){
