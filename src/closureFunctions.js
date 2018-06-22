@@ -9,11 +9,16 @@
 // holaGreeting('Shi-Hao'); // 'Hola, Shi-Hao'
 
 var greetingFactory = function(greeting) {
-	var greet = greeting;
-	return function(string){
-		return greet + ', ' + string;
+	return function(name){
+		return greeting + ', ' + name;
 	}
 }
+
+//----PASSED ALL TEST----//
+
+
+
+
 
 // sumCalculator takes in an initial number that is stored and returns a function
 // that continues adding to the stored value. The function returned by
@@ -30,8 +35,24 @@ var greetingFactory = function(greeting) {
 // calculatorTwo() // 10
 
 var sumCalculator = function(initialValue) {
-  // INSERT CODE HERE
+	var total = initialValue;
+	if(initialValue === undefined){
+		return 0;
+	}
+	return function(){
+		var arg = Array.from(arguments);
+		total = arg.reduce(function(accumulator, valuePassedIn){
+			return accumulator + valuePassedIn;
+		}, total);
+		return total;
+	}
 }
+
+//----PASSED ALL TEST----//
+
+
+
+
 
 // coinFlipTally should generate a storage object, take no arguments, and 
 // return another object with two methods, makeCoinFlip and checkTally. The returned 
@@ -60,8 +81,7 @@ var sumCalculator = function(initialValue) {
 // gameTally.checkTally(); // should have updated count with heads added or tails added
 
 var coinFlipTally = function() {
-  // INSERT CODE HERE
-
+  var storage = {};
 }
 
 module.exports = {
